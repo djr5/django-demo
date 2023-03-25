@@ -1,9 +1,33 @@
-{% load socialaccount %}
-{% block content %}
-    <button class="btn btn-outline-info">
-        <a href="{% provider_login_url 'google'%}?next=/">
-            <i class="fab fa-google"></i>
-            Login with Google
-        </a>
-    </button>
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Landing Page</title>
+</head>
+<body>
+	<header>
+		<h1>Welcome to Sample Django Web Application</h1>
+	</header>
+	<main>
+		<p>Thank you for visiting my landing page!</p>
+		<p>This Django web application is a simple Employee management system that allows users to create an account using Gmail ID. Users can sign up for an account, log in, update profile details</p>
+		{% load socialaccount %}
+        {% block content %}
+            <button class="btn btn-outline-info">
+                <a href="{% provider_login_url 'google'%}?next=/welcome">
+                    <i class="fab fa-google"></i>
+                    Login with Google
+                </a>
+            </button>
+            <button class="btn btn-outline-info">
+                <a href="/login?next=/list-employees">
+                    <i class="fab fa-google"></i>
+                    Login as Admin
+                </a>
+            </button>
+        {% endblock content %}
+	</main>
+	<footer>
+		<p>&copy; Rakend K R. All rights reserved.</p>
+	</footer>
+</body>
+</html>

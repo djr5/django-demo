@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Details</title>
+</head>
+<body>
+	<header>
+		<h1>Employee Details</h1>
+	</header>
+	<main>
+        <p>Welcome, {{name}}</p>
+		<div>
+            <form action="/update-employee/{{user_details.slug}}" method="post">
+                {% csrf_token %}
+                <label for="fname">Name:</label><br>
+                <input type="text" id="name" name="name" value="{{user_details.name}}" disabled><br>
+                <label for="lname">Employee Code:</label><br>
+                <input type="text" id="emp_code" name="emp_code" value="{{user_details.emp_code}}"><br><br>
+                <label for="lname">Age:</label><br>
+                <input type="text" id="age" name="age" value="{{user_details.age}}"><br><br>
+                <label for="lname">Phone:</label><br>
+                <input type="text" id="phone" name="phone" value="{{user_details.phone}}"><br><br>
+                <label for="lname">Salary:</label><br>
+                <input type="text" id="salary" name="salary" value="{{user_details.salary}}"><br><br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+        <div>
+            <form action="/delete-employee/{{user_details.slug}}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+	</main>
+	<footer>
+		<p>&copy; Rakend K R. All rights reserved.</p>
+	</footer>
+    <div>
+        <a href="/logout/?next=/">
+            <button>Logout</button>
+        </a>
+    </div>
+</body>
+</html>

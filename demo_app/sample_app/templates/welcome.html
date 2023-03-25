@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+</head>
+<body>
+
+<h1>Welcome, <strong>{{name}}</strong></h1>
+<p><h3> Add Profile Details</h3></p>
+<div>
+  {% if profile_added %}
+    {{form}}
+  {% else %}
+  <form action = "" method = "post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Submit">
+  {% endif %}
+</form>
+</div>
+<div>
+    <a href="/logout/?next=/">
+        <button>Logout</button>
+    </a>
+</div>
+</body>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+</html>

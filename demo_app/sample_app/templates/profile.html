@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome</title>
+</head>
+<body>
+<h1>Welcome, <strong>{{name}}</strong></h1>
+<p><h4>Profile Details</h4></p>
+<div>
+    <form action="">
+        <label for="fname">Name:</label><br>
+        <input type="text" id="fname" name="fname" value="{{user_data.name}}" disabled><br>
+        <label for="lname">Employee Code:</label><br>
+        <input type="text" id="lname" name="empcode" value="{{user_data.emp_code}}" disabled><br><br>
+        <label for="lname">Age:</label><br>
+        <input type="text" id="lname" name="age" value="{{user_data.age}}"><br><br>
+        <label for="lname">Phone:</label><br>
+        <input type="text" id="lname" name="phone" value="{{user_data.phone}}"><br><br>
+    </form>
+</div>
+
+<div>
+    {%if user_data.salary %}
+    <h4>Current Salary: </h4>{{user_data.salary}}
+    {% else %}
+    <h4>Add Salary</h4>
+    <form action="/add-salary" method="post">
+        {% csrf_token %}
+        <input type="number" id="salary" name="salary" value="" required><br><br>
+        <input type="hidden" id="slug" name="slug" value="{{user_data.slug}}"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</div>
+
+<div>
+    <br><br>
+    <a href="/logout/?next=/">
+        <button>Logout</button>
+    </a>
+</div>
+</body>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+</html>

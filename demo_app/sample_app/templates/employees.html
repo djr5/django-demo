@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Employees</title>
+</head>
+<body>
+	<header>
+		<h1>Employee List</h1>
+	</header>
+	<main>
+        <p>Welcome, {{name}}</p>
+		<table border="1">
+            <thead>
+              <tr>
+                <th>SL No</th>
+                <th>Name</th>
+                <th>Employee Code</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for user in user_details %}
+                    <tr id="{{user.slug}}">
+                        <td>{{user.sl_no}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.emp_code}}</td>
+                        <td>{{user.age}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.salary}}</td>
+                        <td>
+                            <a href="/get-employee/{{user.slug}}">
+                                <button>View</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table> 
+	</main>
+	<footer>
+		<p>&copy; Rakend K R. All rights reserved.</p>
+	</footer>
+    <div>
+        <a href="/logout/?next=/">
+            <button>Logout</button>
+        </a>
+    </div>
+</body>
+</html>
